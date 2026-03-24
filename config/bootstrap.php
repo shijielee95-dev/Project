@@ -10,6 +10,7 @@
 require_once __DIR__ . '/app.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/lhdn.php';
+require_once __DIR__ . '/../includes/dropdown.php';
 
 // Load theme tokens into global $theme
 $theme = require __DIR__ . '/theme.php';
