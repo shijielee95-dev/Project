@@ -26,7 +26,7 @@
 function renderDropdown(
     string $name,
     array  $options,
-    string $selected     = '',
+    mixed  $selected     = '',
     string $placeholder  = 'Select...',
     bool   $required     = false,
     string $extraClasses = ''
@@ -36,9 +36,16 @@ function renderDropdown(
     foreach ($options as $value => $label) {
         $alpineOptions[] = ['value' => (string)$value, 'text' => $label];
     }
-    $optionsJson  = json_encode($alpineOptions, JSON_HEX_APOS | JSON_HEX_QUOT);
-    $selectedJson = json_encode($selected);
+    $selectedValue = (string)($selected ?? '');
+    $optionsJson   = json_encode($alpineOptions, JSON_HEX_APOS | JSON_HEX_QUOT);
+    $selectedJson  = json_encode($selectedValue, JSON_HEX_APOS | JSON_HEX_QUOT);
+    $placeholderJson = json_encode($placeholder, JSON_HEX_APOS | JSON_HEX_QUOT);
+    $placeholderEscaped = htmlspecialchars($placeholder, ENT_QUOTES, 'UTF-8');
+    $nameEscaped = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+    $extraClassesEscaped = htmlspecialchars($extraClasses, ENT_QUOTES, 'UTF-8');
     $req          = $required ? 'required' : '';
+    $hasEmptyOption = array_key_exists('', $options);
+    $placeholderSelected = $selectedValue === '' ? ' selected' : '';
 
     echo <<<HTML
 <div x-data="{
@@ -47,10 +54,10 @@ function renderDropdown(
         options: {$optionsJson},
         get label() {
             const found = this.options.find(o => o.value === this.value);
-            return found ? found.text : '{$placeholder}';
+            return found ? found.text : {$placeholderJson};
         }
      }"
-     class="relative {$extraClasses}">
+     class="relative {$extraClassesEscaped}">
 
     <!-- Visible button -->
     <button type="button"
@@ -66,7 +73,7 @@ function renderDropdown(
     </button>
 
     <!-- Dropdown list -->
-    <div x-show="open"
+    <div x-cloak x-show="open"
          @click.outside="open = false"
          x-transition:enter="transition ease-out duration-100"
          x-transition:enter-start="opacity-0 scale-95"
@@ -94,14 +101,20 @@ function renderDropdown(
     </div>
 
     <!-- Hidden native select for form submission & browser validation -->
-    <select name="{$name}" x-model="value" {$req}
+    <select name="{$nameEscaped}" x-model="value" {$req}
             class="absolute opacity-0 pointer-events-none w-0 h-0 top-0 left-0" tabindex="-1"
             aria-hidden="true">
-        <option value="" disabled><?= htmlspecialchars($placeholder) ?></option>
-        HTML;
+HTML;
+
+    if (!$hasEmptyOption) {
+        echo '<option value="" disabled' . $placeholderSelected . '>' . $placeholderEscaped . '</option>';
+    }
+
+    echo <<<HTML
+HTML;
 
     foreach ($options as $value => $label) {
-        $sel = ($selected === (string)$value) ? ' selected' : '';
+        $sel = ($selectedValue === (string)$value) ? ' selected' : '';
         echo '<option value="' . htmlspecialchars((string)$value) . '"' . $sel . '>' . htmlspecialchars($label) . '</option>';
     }
 

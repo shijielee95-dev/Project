@@ -13,9 +13,11 @@ function layoutOpen(string $pageTitle = '', string $pageSubtitle = ''): void {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?> — <?= htmlspecialchars($theme['app_name']) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        [x-cloak] { display: none !important; }
         .sidebar-scroll { scrollbar-width: thin; scrollbar-color: rgba(148,163,184,0.3) transparent; }
         .sidebar-scroll::-webkit-scrollbar { width: 4px; }
         .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }

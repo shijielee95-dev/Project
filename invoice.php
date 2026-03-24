@@ -21,6 +21,21 @@ $stats = $pdo->query("
 $search  = trim($_GET['search']  ?? '');
 $statusF = trim($_GET['status']  ?? '');
 $lhdnF   = trim($_GET['lhdn']    ?? '');
+$statusFilterOptions = [
+    ''          => 'All Status',
+    'draft'     => 'Draft',
+    'sent'      => 'Sent',
+    'paid'      => 'Paid',
+    'overdue'   => 'Overdue',
+    'cancelled' => 'Cancelled',
+];
+$lhdnFilterOptions = [
+    ''        => 'All',
+    'none'    => 'Not Submitted',
+    'pending' => 'Pending',
+    'valid'   => 'Validated',
+    'invalid' => 'Invalid',
+];
 
 $where  = ['1=1'];
 $params = [];
@@ -111,24 +126,29 @@ document.getElementById('pageActions').innerHTML = `
     <!-- Status -->
     <div>
         <label class="<?= t('label') ?>">Status</label>
-        <select name="status" class="<?= t('select') ?>">
-            <option value="">All Status</option>
-            <?php foreach (['draft','sent','paid','overdue','cancelled'] as $s): ?>
-            <option value="<?= $s ?>" <?= $statusF === $s ? 'selected' : '' ?>><?= ucfirst($s) ?></option>
-            <?php endforeach; ?>
-        </select>
+        <?php
+        renderDropdown(
+            name: 'status',
+            options: $statusFilterOptions,
+            selected: $statusF,
+            placeholder: 'All Status',
+            extraClasses: 'w-44'
+        );
+        ?>
     </div>
 
     <!-- LHDN -->
     <div>
         <label class="<?= t('label') ?>">LHDN Status</label>
-        <select name="lhdn" class="<?= t('select') ?>">
-            <option value="">All</option>
-            <option value="none"    <?= $lhdnF === 'none'    ? 'selected' : '' ?>>Not Submitted</option>
-            <option value="pending" <?= $lhdnF === 'pending' ? 'selected' : '' ?>>Pending</option>
-            <option value="valid"   <?= $lhdnF === 'valid'   ? 'selected' : '' ?>>Validated</option>
-            <option value="invalid" <?= $lhdnF === 'invalid' ? 'selected' : '' ?>>Invalid</option>
-        </select>
+        <?php
+        renderDropdown(
+            name: 'lhdn',
+            options: $lhdnFilterOptions,
+            selected: $lhdnF,
+            placeholder: 'All',
+            extraClasses: 'w-44'
+        );
+        ?>
     </div>
 
     <div class="flex gap-2">

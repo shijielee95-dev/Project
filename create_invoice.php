@@ -43,6 +43,33 @@ $company = $pdo->query("SELECT msic_code FROM company_profiles WHERE id=1")->fet
 $title = $editMode ? 'Edit Invoice' : 'New Invoice';
 $sub   = $editMode ? 'Update invoice details below.' : 'Fill in the details below to create an invoice.';
 
+$statusOptions = [
+    'draft'   => 'Draft',
+    'sent'    => 'Sent',
+    'paid'    => 'Paid',
+    'overdue' => 'Overdue',
+];
+$currencyOptions = [
+    'MYR' => 'MYR',
+    'USD' => 'USD',
+    'SGD' => 'SGD',
+    'EUR' => 'EUR',
+    'GBP' => 'GBP',
+];
+$paymentMethodOptions = [
+    '01' => 'Cash',
+    '02' => 'Cheque',
+    '03' => 'Bank Transfer',
+    '04' => 'Credit Card',
+    '05' => 'Online Banking',
+];
+$lhdnInvoiceTypeOptions = [
+    '01' => '01 — Invoice',
+    '02' => '02 — Credit Note',
+    '03' => '03 — Debit Note',
+    '04' => '04 — Refund Note',
+];
+
 layoutOpen($title, $sub);
 ?>
 
@@ -78,13 +105,15 @@ document.getElementById('pageActions').innerHTML = `
                     </div>
                     <div>
                         <label class="<?= t('label') ?>">Status</label>
-                        <select name="status" class="<?= t('select') ?> w-full">
-                            <?php foreach (['draft','sent','paid','overdue'] as $s): ?>
-                            <option value="<?= $s ?>" <?= ($editMode && $inv['status'] === $s) ? 'selected' : (!$editMode && $s === 'draft' ? 'selected' : '') ?>>
-                                <?= ucfirst($s) ?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
+                        <?php
+                        renderDropdown(
+                            name: 'status',
+                            options: $statusOptions,
+                            selected: $editMode ? (string)($inv['status'] ?? 'draft') : 'draft',
+                            placeholder: 'Select status',
+                            extraClasses: 'w-full'
+                        );
+                        ?>
                     </div>
                     <div>
                         <label class="<?= t('label') ?>">Invoice Date <span class="text-red-400">*</span></label>
@@ -100,21 +129,27 @@ document.getElementById('pageActions').innerHTML = `
                     </div>
                     <div>
                         <label class="<?= t('label') ?>">Currency</label>
-                        <select name="currency" class="<?= t('select') ?> w-full">
-                            <?php foreach (['MYR','USD','SGD','EUR','GBP'] as $c): ?>
-                            <option value="<?= $c ?>" <?= ($editMode && $inv['currency'] === $c) ? 'selected' : (!$editMode && $c === 'MYR' ? 'selected' : '') ?>><?= $c ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <?php
+                        renderDropdown(
+                            name: 'currency',
+                            options: $currencyOptions,
+                            selected: $editMode ? (string)($inv['currency'] ?? 'MYR') : 'MYR',
+                            placeholder: 'Select currency',
+                            extraClasses: 'w-full'
+                        );
+                        ?>
                     </div>
                     <div>
                         <label class="<?= t('label') ?>">Payment Method</label>
-                        <select name="payment_method" class="<?= t('select') ?> w-full">
-                            <option value="01" <?= ($editMode && $inv['payment_method']==='01') ? 'selected':'' ?>>Cash</option>
-                            <option value="02" <?= ($editMode && $inv['payment_method']==='02') ? 'selected':'' ?>>Cheque</option>
-                            <option value="03" <?= ($editMode && $inv['payment_method']==='03') ? 'selected':'' ?>>Bank Transfer</option>
-                            <option value="04" <?= ($editMode && $inv['payment_method']==='04') ? 'selected':'' ?>>Credit Card</option>
-                            <option value="05" <?= ($editMode && $inv['payment_method']==='05') ? 'selected':'' ?>>Online Banking</option>
-                        </select>
+                        <?php
+                        renderDropdown(
+                            name: 'payment_method',
+                            options: $paymentMethodOptions,
+                            selected: $editMode ? (string)($inv['payment_method'] ?? '01') : '01',
+                            placeholder: 'Select payment method',
+                            extraClasses: 'w-full'
+                        );
+                        ?>
                     </div>
                 </div>
             </div>
@@ -257,12 +292,16 @@ document.getElementById('pageActions').innerHTML = `
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="<?= t('label') ?> text-violet-700">Invoice Type <span class="text-red-400">*</span></label>
-                        <select name="lhdn_invoice_type" class="<?= t('select') ?> w-full">
-                            <option value="01" <?= ($editMode && $inv['lhdn_invoice_type']==='01') ? 'selected':'' ?>>01 — Invoice</option>
-                            <option value="02" <?= ($editMode && $inv['lhdn_invoice_type']==='02') ? 'selected':'' ?>>02 — Credit Note</option>
-                            <option value="03" <?= ($editMode && $inv['lhdn_invoice_type']==='03') ? 'selected':'' ?>>03 — Debit Note</option>
-                            <option value="04" <?= ($editMode && $inv['lhdn_invoice_type']==='04') ? 'selected':'' ?>>04 — Refund Note</option>
-                        </select>
+                        <?php
+                        renderDropdown(
+                            name: 'lhdn_invoice_type',
+                            options: $lhdnInvoiceTypeOptions,
+                            selected: $editMode ? (string)($inv['lhdn_invoice_type'] ?? '01') : '01',
+                            placeholder: 'Select invoice type',
+                            required: true,
+                            extraClasses: 'w-full'
+                        );
+                        ?>
                     </div>
                     <div>
                         <label class="<?= t('label') ?> text-violet-700">MSIC Code <span class="text-red-400">*</span></label>
