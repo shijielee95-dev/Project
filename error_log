@@ -1,0 +1,58 @@
+[24-Mar-2026 11:42:47 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 11:42:49 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 11:42:49 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 11:42:50 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 11:42:50 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 12:03:51 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 12:03:53 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 12:04:58 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 12:04:59 Asia/Kuala_Lumpur] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/ssisbcom/public_html/evieweb.com/project/config/db.php:25
+Stack trace:
+#0 /home/ssisbcom/public_html/evieweb.com/project/config/db.php(25): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), Array)
+#1 /home/ssisbcom/public_html/evieweb.com/project/login_process.php(36): db()
+#2 {main}
+  thrown in /home/ssisbcom/public_html/evieweb.com/project/config/db.php on line 25
+[24-Mar-2026 21:12:56 Asia/Kuala_Lumpur] PHP Parse error:  Invalid body indentation level (expecting an indentation level of at least 8) in /home/ssisbcom/public_html/evieweb.com/project/includes/dropdown.php on line 44
+[24-Mar-2026 21:13:18 Asia/Kuala_Lumpur] PHP Parse error:  Invalid body indentation level (expecting an indentation level of at least 8) in /home/ssisbcom/public_html/evieweb.com/project/includes/dropdown.php on line 44
+[24-Mar-2026 21:13:55 Asia/Kuala_Lumpur] PHP Parse error:  Invalid body indentation level (expecting an indentation level of at least 8) in /home/ssisbcom/public_html/evieweb.com/project/includes/dropdown.php on line 44
+[24-Mar-2026 21:15:29 Asia/Kuala_Lumpur] PHP Parse error:  Invalid body indentation level (expecting an indentation level of at least 8) in /home/ssisbcom/public_html/evieweb.com/project/includes/dropdown.php on line 44
